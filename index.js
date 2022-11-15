@@ -30,13 +30,13 @@ const rest = new REST({ version: '10' }).setToken(TOKEN);
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
   });
-  
-  client.on('interactionCreate', async interaction => {
-    if (!interaction.isChatInputCommand()) return;
-  
-    const command = client.commands.get(interaction.commandName)
-    if(!command) return
-    command.run(interaction)
-  });
-  
-  client.login(TOKEN);
+
+client.on('interactionCreate', async interaction => {
+if (!interaction.isChatInputCommand()) return;
+
+const command = client.commands.get(interaction.commandName)
+if(!command) return
+command.run(interaction)
+});
+
+client.login(TOKEN);
