@@ -32,11 +32,15 @@ client.on('ready', () => {
   });
 
 client.on('interactionCreate', async interaction => {
-if (!interaction.isChatInputCommand()) return;
+    try {
+        if (!interaction.isChatInputCommand()) return;
 
-const command = client.commands.get(interaction.commandName)
-if(!command) return
-command.run(interaction)
+        const command = client.commands.get(interaction.commandName)
+        if(!command) return
+        command.run(interaction)
+    } catch (error) {
+        interaction.reply('Ops! Um erro ocorreu!')
+    }
 });
 
 client.login(TOKEN);
